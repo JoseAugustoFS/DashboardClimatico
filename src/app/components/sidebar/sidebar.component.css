@@ -28,18 +28,18 @@ a {
     text-align: center;
 }
 
-.sidebar .nav-link img {
+.sidebar .nav-item a img {
     width: 40px;
     height: 40px;
     margin: 0 25px;
 }
 
-.sidebar .nav-link {
+.sidebar .nav-item a {
     margin: 10px;
     color: aliceblue;
 }
 
-.sidebar .nav-link:hover{
+.sidebar .nav-item a:hover{
     color: rgb(193, 222, 247);
 }
 
@@ -49,13 +49,13 @@ a {
         max-width: 150px;
     }
 
-    .sidebar .nav-link img {
+    .sidebar .nav-item a img {
         width: 21px;
         height: 21px;
         margin: 0 10px;
     }
 
-    .sidebar .nav-link {
+    .sidebar .nav-item a {
         margin: 8px;
     }
 
@@ -79,7 +79,6 @@ a {
         max-width: 100%;
         height: auto;
         position: fixed;
-
     }
 
     .sidebar-footer {
@@ -87,7 +86,7 @@ a {
         padding: 15px;
     }
 
-    .sidebar .nav-link {
+    .sidebar .nav-item a {
         padding: 8px;
         margin: 5px 0;
     }

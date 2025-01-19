@@ -2,25 +2,25 @@
     <h2 class="text-center py-4">Dashboard Climático</h2>
     <ul class="nav nav-pills flex-column">
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a [class]="this.router.url === '/'?'nav-link active':'nav-link'"  routerLink="/">
                 <img src="../../../assets/svg/home.svg" alt="home">
                 Home
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a [class]="this.router.url === '/temperature'?'nav-link active':'nav-link'" routerLink="/temperature">
                 <img src="../../../assets/svg/temperature.svg" alt="temperature">
                 Temperatura
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a [class]="this.router.url === '/rain'?'nav-link active':'nav-link'" routerLink="/rain">
                 <img src="../../../assets/svg/rain.svg" alt="rain">
                 Chuva
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a [class]="this.router.url === '/wind'?'nav-link active':'nav-link'" routerLink="/wind">
                 <img src="../../../assets/svg/wind.svg" alt="wind">
                 Vento
             </a>
