@@ -1,0 +1,35 @@
+.sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background-color: #343a40;
+    color: white;
+    height: 100vh;
+    position: relative;
+}
+
+.sidebar-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.sidebar li a {
+    border: 1px solid grey;
+    border-radius: 50px;
+    text-align: center;
+}
+
+.sidebar .nav-link {
+    margin: 10px;
+    color: aliceblue;
+}
+
+.sidebar .nav-link:hover{
+    color: rgb(193, 222, 247);
+}
