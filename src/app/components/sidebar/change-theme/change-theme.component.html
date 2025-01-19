@@ -1,0 +1,5 @@
+<div class="btn-group">
+    <button [class]="applyedTheme === 'light' ? 'btn btn-outline-secondary active': 'btn btn-outline-secondary'" (click)="changeTheme('light')">Light</button>
+    <button [class]="applyedTheme === 'dark' ? 'btn btn-outline-secondary active': 'btn btn-outline-secondary'" (click)="changeTheme('dark')">Dark</button>
+    <button [class]="applyedTheme === 'auto' ? 'btn btn-outline-secondary active': 'btn btn-outline-secondary'" (click)="changeTheme('auto')">Auto</button>
+  </div>

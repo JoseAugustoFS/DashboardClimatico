@@ -1,0 +1,54 @@
+.light-theme {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --primary-color: #007bff;
+}
+
+.dark-theme {
+  --bg-color: #121212;
+  --text-color: #ffffff;
+  --primary-color: #bb86fc;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --primary-color: #bb86fc;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --primary-color: #007bff;
+  }
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+button {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}
+
+.btn-group {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+}
+
+@media (max-width: 850px) {
+
+  .btn-group button {
+    width: 40px;
+    height: 40px;
+    font-size: 12px;
+    padding: 6px;
+  }
+
+}
