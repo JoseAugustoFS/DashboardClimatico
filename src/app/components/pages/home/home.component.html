@@ -1,2 +1,98 @@
-<p>home works!</p>
-<app-location-search/>
+<div class="container mt-5">
+  @if(weatherData?.max_apparent_temperature){
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <!-- Cartão para a temperatura máxima aparente -->
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Temperatura Máxima Aparente</h5>
+            <p class="card-text">{{ weatherData?.max_apparent_temperature }} ° {{ unit }}</p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Cartão para a temperatura máxima -->
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Temperatura Máxima</h5>
+            <p class="card-text">{{ weatherData?.max_temperature }} ° {{ unit }}</p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Cartão para a temperatura mínima aparente -->
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Temperatura Mínima Aparente</h5>
+            <p class="card-text">{{ weatherData?.min_apparent_temperature }} ° {{ unit }}</p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Cartão para a temperatura mínima -->
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Temperatura Mínima</h5>
+            <p class="card-text">{{ weatherData?.min_temperature }} ° {{ unit }}</p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Cartão para a probabilidade de precipitação -->
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Probabilidade de Precipitação</h5>
+            <p class="card-text">{{ weatherData?.precipitationProbability }} %</p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Cartão para a quantidade de chuva -->
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Quantidade de Chuva</h5>
+            <p class="card-text">{{ weatherData?.rain }} mm</p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Cartão para a quantidade de neve -->
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Quantidade de Neve</h5>
+            <p class="card-text">{{ weatherData?.snowfall }} mm</p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Cartão para a direção do vento -->
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Direção do Vento</h5>
+            <p class="card-text">{{ weatherData?.windDirection }} °</p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Cartão para a velocidade do vento -->
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Velocidade do Vento</h5>
+            <p class="card-text">{{ weatherData?.windSpeed }} km/s</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  }@else {
+    <p>Selecione um local</p>
+  }
+  </div>
+  

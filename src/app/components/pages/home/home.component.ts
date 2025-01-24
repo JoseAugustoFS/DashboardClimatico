@@ -1,24 +1,48 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { WeatherService } from '../../../services/weather.service';
-import { LocationSearchComponent } from '../../location-search/location-search.component';
+import { LocationService } from '../../../services/location.service';
+import { ILocation } from '../../../interfaces/ilocation';
+import { ICurrentWeather } from '../../../interfaces/icurrent-weather';
 
 
 @Component({
   standalone: true,
-  imports: [LocationSearchComponent],
+  imports: [],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
 
   private weatherService: WeatherService = inject(WeatherService);
+  private locationService = inject(LocationService)
+  public location: ILocation | undefined = this.locationService.getLocation;
+  public weatherData?: ICurrentWeather;
+  public unit: 'C' | 'F' | 'K' = this.weatherService.currentTemperatureUnit;
 
   ngOnInit(): void {
-    // console.log(Object.values(cities).filter(city => city.name.includes("Pará") && city.country.includes("BR")));
-    this.weatherService.getWeather(52.52, 13.41);
-     
+
+    this.weatherService.temperatureUnitChange.subscribe(unit => {
+      this.getWeather();
+      this.unit = unit;
+    });
+
+    this.locationService.locationChange.subscribe((location: ILocation) => {
+      this.location = location;
+      this.getWeather();
+    });
+    this.getWeather();
   }
 
-  
+  private getWeather(){
+    if (this.location) {  
+      this.weatherService.getCurrentWeather(this.location?.coordinates.lat, this.location?.coordinates.long).subscribe(weatherData => {
+        this.weatherData = weatherData;
+      });
+    }
+  }
+
+
+
+
 
 }

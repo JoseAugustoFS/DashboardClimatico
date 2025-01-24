@@ -29,7 +29,7 @@ export class LocationSearchComponent implements OnInit {
     });
 
     this.searchLocationForm.get('searchString')?.valueChanges.pipe(
-      debounceTime(500),
+      debounceTime(300),
       distinctUntilChanged(),
       switchMap(searchTerm => {
         if (searchTerm) {

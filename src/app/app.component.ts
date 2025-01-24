@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ThemeService } from './services/theme.service';
+import { LocationSearchComponent } from './components/location-search/location-search.component';
+import { ChangeTemperatureUnitComponent } from './components/change-temperature-unit/change-temperature-unit.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, SidebarComponent],
+  imports: [RouterOutlet, SidebarComponent, LocationSearchComponent, ChangeTemperatureUnitComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

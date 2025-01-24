@@ -1,0 +1,23 @@
+.form-select {
+    width: 150px;
+}
+
+/* Alinha o select à direita */
+.select-container {
+    text-align: right;
+}
+
+/* O select ocupará o espaço necessário e ficará alinhado à direita */
+.form-select {
+    display: inline-block;
+}
+
+
+@media (max-width: 850px) {
+
+    .form-select {
+        font-size: small;
+    }
+
+
+}

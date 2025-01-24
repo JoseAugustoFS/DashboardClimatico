@@ -11,6 +11,7 @@ export class LocationService {
 
   private location?: ILocation;
   private searchSubject = new Subject<string>();
+  private locationChangeSubject = new Subject<ILocation>();
 
   constructor(private http: HttpClient) {
     if (typeof window !== 'undefined' && window.localStorage) {
@@ -31,6 +32,12 @@ export class LocationService {
     return this.location;
   }
 
+
+  get locationChange(): Observable<ILocation> {
+    return this.locationChangeSubject.asObservable();
+  }
+
+
   set setLocation(location: ILocation) {
     this.location = location;
     if (typeof window !== 'undefined' && window.localStorage) {
@@ -38,6 +45,7 @@ export class LocationService {
       localStorage.setItem('location-lat', ''+location.coordinates.lat);
       localStorage.setItem('location-long', ''+location.coordinates.long);
     }
+    this.locationChangeSubject.next(location);
   }
 
   public search(search: string): void {
@@ -64,6 +72,4 @@ export class LocationService {
       })
     );
   }
-
-  //https://nominatim.org/release-docs/develop/
 }

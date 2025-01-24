@@ -1,4 +1,16 @@
 <div class="body">
-  <app-sidebar />
-  <router-outlet />
+  <app-sidebar/>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-auto"> 
+        <app-location-search />
+      </div>
+      <div class="col-auto"> 
+        <app-change-temperature-unit />
+      </div>
+    </div>
+    <div class="col-12">
+      <router-outlet />
+    </div>
+  </div>
 </div>

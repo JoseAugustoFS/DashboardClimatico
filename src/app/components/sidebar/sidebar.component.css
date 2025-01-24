@@ -84,6 +84,7 @@ a {
     .sidebar-footer {
         position: static;
         padding: 15px;
+        font-size: 9px;
     }
 
     .sidebar .nav-item a {

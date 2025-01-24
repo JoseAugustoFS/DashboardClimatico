@@ -2,13 +2,35 @@
     display: flex;
 }
 
+.row {
+    display: grid;
+    grid-template-columns: auto 150px;
+    gap: 10px;
+    width: 100%;
+    
+}
+
+@media (max-width: 680px) {
+
+    .row {
+        display: flex;
+    }
+
+    .col-auto {
+        justify-content: start;
+    }
+    
+
+}
+
+
 @media (max-width: 480px) {
     .body {
         flex-direction: column;
     }
 
-    router-outlet {
-        width: 100%;
-        padding: 195px;
+    app-sidebar {
+        flex: 0 0 425px;
     }
+
 }
