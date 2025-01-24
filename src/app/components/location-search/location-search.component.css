@@ -1,0 +1,28 @@
+.dropdown-menu:empty {
+  visibility: hidden;
+}
+
+.form-control, .dropdown-menu li {
+  width: 300px;
+}
+
+.dropdown-menu li {
+  overflow: hidden;
+}
+
+.dropdown-menu li a {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 850px) {
+
+  .form-control, .dropdown-menu li {
+    width: 200px;
+    font-size: small;
+  }
+
+
+}

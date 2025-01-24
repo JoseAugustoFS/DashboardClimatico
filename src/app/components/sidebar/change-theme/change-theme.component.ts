@@ -20,6 +20,7 @@ export class ChangeThemeComponent implements OnInit {
   private getApplyedTheme(): void {
     if (typeof window !== 'undefined' && window.document) {
       this.applyedTheme = localStorage.getItem('theme');
+      this.applyedTheme = this.applyedTheme ? this.applyedTheme : "auto"
     }
   }
 

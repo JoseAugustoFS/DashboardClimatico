@@ -1,0 +1,17 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <div class="dropdown">
+        <form [formGroup]="searchLocationForm">
+          <input type="text" class="form-control" placeholder="Digite um local" data-bs-toggle="dropdown"
+            [value]="searchString" formControlName="searchString" [title]="searchLocationForm.value.searchString"/>
+          <ul class="dropdown-menu" id="dropdownMenu">
+            @for(location of locations; track location){
+            <li><a class="dropdown-item" href="#" [title]="location.name" (click)="selectLocation(location)" >{{ location.name }}</a></li>
+            }
+          </ul>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
