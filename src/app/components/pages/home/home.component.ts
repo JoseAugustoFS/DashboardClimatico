@@ -41,6 +41,12 @@ export class HomeComponent implements OnInit {
   }
 
 
+  public getDirection(degree: number): string {
+    const direction = ['Norte', 'Nordeste', 'Leste', 'Sudeste', 'Sul', 'Sudoeste', 'Oeste', 'Noroeste'];
+    const precisionDegree = degree % 360;
+    const index = Math.floor((precisionDegree + 22.5) / 45) % 8;
+    return direction[index];
+  }
 
 
 

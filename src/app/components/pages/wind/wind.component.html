@@ -1,4 +1,4 @@
-<div class="container d-flex justify-content-center">
+<div class="container d-flex justify-content-center pb-5">
     <h1>Histórico do último ano</h1>
 </div>
 @if(location?.name !== null){
@@ -10,8 +10,8 @@
             </canvas>
             <div class="d-flex justify-content-center">
                 <span>
-                    O dia com a maior velocidade do vento foi {{ maxWindSpeedDate?.toLocaleDateString() }} com {{ maxWindSpeed }}km/h
-                    e o dia com a maior rajada foi {{ maxWindGustDate?.toLocaleDateString() }} com {{ maxWindGust }}km/h.
+                    O dia com a maior velocidade do vento foi {{ maxWindSpeedDate?.toLocaleDateString() }} com {{ maxWindSpeed }} km/h
+                    e o dia com a maior rajada foi {{ maxWindGustDate?.toLocaleDateString() }} com {{ maxWindGust }} km/h.
                 </span>
             </div>
         </div>

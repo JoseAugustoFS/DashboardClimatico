@@ -1,11 +1,25 @@
 body.bg-dark {
-    background-color: #343a40 !important;
-    color: #ffffff !important;
+  background-color: #343a40 !important;
+  color: #ffffff !important;
+
+  .card {
+    background-color: #ffffff9c !important;
+    color: #181818 !important;
+
+    img {
+      filter: invert(1);
+    }
   }
-  
-  body.bg-light {
-    background-color: #d2d4d6 !important;
-    color: #000000 !important;
+}
+
+body.bg-light {
+  background-color: #d2d4d6 !important;
+  color: #000000 !important;
+
+  .card {
+    background-color: #23272b8e !important;
+    color: #d4d4d4 !important;
+  }
 }
 
 .spinner-border {
@@ -14,21 +28,37 @@ body.bg-dark {
 }
 
 #content span {
-    padding-bottom: 20px;
+  padding-bottom: 20px;
 }
 
 @media (max-width: 690px) {
 
   #content h1 {
-      font-size: 1.7em;
+    font-size: 1.7em;
   }
 
   #content h2 {
-      font-size: 1.3em;
+    font-size: 1.3em;
   }
 
   #content span {
-      font-size: 0.8em;
+    font-size: 0.8em;
+  }
+
+}
+
+@media (max-height: 600px) {
+
+  #content h1 {
+    font-size: 1.5em;
+  }
+
+  #content h2 {
+    font-size: 1.1em;
+  }
+
+  #content span {
+    font-size: 0.7em;
   }
 
 }

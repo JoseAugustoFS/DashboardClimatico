@@ -1,0 +1,52 @@
+img {
+    width: 100px;
+    height: 100px;
+}
+
+.card {
+    height: 250px;
+    flex-direction: row;
+    align-items: center;
+}
+
+@media (max-width: 480px) {
+
+    img {
+        width: 60px;
+        height: 60px;
+    }
+
+    h5 {
+        font-size: 1.1em;
+    }
+
+    p {
+        font-size: 0.8em;
+    }
+
+    .card {
+        height: 200px;
+    }
+
+}
+
+@media (max-height: 600px) {
+
+    img {
+        width: 70px;
+        height: 70px;
+    }
+
+    h5 {
+        font-size: 1.1em;
+    }
+
+    p {
+        font-size: 0.8em;
+    }
+
+    .card {
+        height: 200px;  
+    }
+  
+  }

@@ -14,7 +14,7 @@ export const routes: Routes = [
         component: TemperatureComponent,
     },
     {
-        path: 'rain',
+        path: 'precipitation',
         component: RainComponent,
     },
     {

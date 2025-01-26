@@ -4,6 +4,10 @@
     overflow: hidden;
 }
 
+#content{
+    margin-top: 50px;
+}
+
 .row {
     display: grid;
     grid-template-columns: auto 150px;
@@ -46,11 +50,16 @@ app-sidebar {
     }
 
     app-sidebar {
-        flex: 0 0 425px;
+        flex: 0 0 350px;
     }
 
     .container {
         z-index: -1;
     }
 
+    #content{
+        margin-top: 10px;
+    }
+
 }
+

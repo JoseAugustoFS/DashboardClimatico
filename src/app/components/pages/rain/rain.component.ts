@@ -74,6 +74,7 @@ export class RainComponent implements OnInit {
   public lineChartOptions: ChartConfiguration<'line'>['options'] = {
     responsive: true,
     maintainAspectRatio: true,
+    plugins: { legend: { position: typeof window !== 'undefined' && window.innerWidth > 600 ?'top':'right' } }
   };
   public doughnutChartOptions: ChartConfiguration<'doughnut'>['options'] = {
     responsive: true,
