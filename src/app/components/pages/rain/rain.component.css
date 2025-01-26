@@ -1,0 +1,20 @@
+#doughnut {
+    width: 600px;
+    height: 600px;
+}
+
+@media (max-width: 690px) {
+
+    #doughnut {
+        width: 400px;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    #doughnut {
+        width: 350px;
+    }
+
+}

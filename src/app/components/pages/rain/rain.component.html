@@ -1,1 +1,30 @@
-<p>rain works!</p>
+<div class="container d-flex justify-content-center">
+    <h1>Histórico do último ano</h1>
+</div>
+@if(location?.name !== null){
+
+    <div class="container">
+        <h2>Precipitação:</h2>
+        <canvas id="line" baseChart [data]="lineChartPrecipitationData" [options]="lineChartOptions" [plugins]="lineChartPlugins"
+            [legend]="globalChartLegend" [type]="'line'">
+        </canvas>
+        <div class="d-flex justify-content-center">
+            <span>
+                O dia com a maior precipitação foi {{ maxPrecipitationDate?.toLocaleDateString() }} com {{ maxPrecipitation }}mm
+                e houve precipitação o dia todo em {{ amountPrecipitationAllDay }} dias.
+            </span>
+        </div>
+    </div>
+
+    <h2>Tipos de precipitação:</h2>
+    <div id="doughnut" class="container">
+        <canvas baseChart [data]="doughnutChartPrecipitationTypeData" [options]="doughnutChartOptions" [plugins]="doughnutChartPlugins"
+            [legend]="globalChartLegend" [type]="'doughnut'">
+        </canvas>
+    </div>
+
+}@else {
+<div class="container d-flex justify-content-center">
+    <h3>Nenhum local selecionado</h3>
+</div>
+}

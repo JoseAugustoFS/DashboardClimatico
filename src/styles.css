@@ -8,11 +8,27 @@ body.bg-dark {
     color: #000000 !important;
 }
 
-#titulo {
-  height: 10vh;
-}
-
 .spinner-border {
   width: 5rem;
   height: 5rem;
+}
+
+#content span {
+    padding-bottom: 20px;
+}
+
+@media (max-width: 690px) {
+
+  #content h1 {
+      font-size: 1.7em;
+  }
+
+  #content h2 {
+      font-size: 1.3em;
+  }
+
+  #content span {
+      font-size: 0.8em;
+  }
+
 }

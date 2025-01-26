@@ -4,7 +4,7 @@
       [value]="searchString" formControlName="searchString" [title]="searchLocationForm.value.searchString" />
     <ul class="dropdown-menu" id="dropdownMenu">
       @for(location of locations; track location){
-      <li><a class="dropdown-item" href="#" [title]="location.name" (click)="selectLocation(location)">{{ location.name
+      <li><a class="dropdown-item" [title]="location.name" (click)="selectLocation(location)">{{ location.name
           }}</a></li>
       }
     </ul>

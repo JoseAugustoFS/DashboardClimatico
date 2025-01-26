@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { map, Observable, Subject, switchMap } from 'rxjs';
 import { ICurrentWeather } from '../interfaces/icurrent-weather';
 import { IHistoricalTemperature } from '../interfaces/ihistorical-temperature';
+import { IHistoricalRain } from '../interfaces/ihistorical-rain';
+import { IHistoricalWind } from '../interfaces/ihistorical-wind';
 
 type temperature = 'C' | 'F' | 'K';
 const YEAR_DIFERENCE: number = 1;
@@ -52,7 +54,7 @@ export class WeatherService {
   }
 
   get temperatureUnitChange(): Observable<temperature> {
-      return this.temperatureUnitChangeSubject.asObservable();
+    return this.temperatureUnitChangeSubject.asObservable();
   }
 
   setTemperatureUnit(unit: temperature): void {
@@ -82,7 +84,7 @@ export class WeatherService {
   }
 
   public getHistoricalTemperature(latitude: number, longitude: number): Observable<IHistoricalTemperature[]> {
-    return this.http.get(`https://archive-api.open-meteo.com/v1/archive?latitude=${latitude}&longitude=${longitude}&start_date=${this.startDate}&end_date=${this.endDate}&daily=temperature_2m_max,temperature_2m_min,temperature_2m_mean,apparent_temperature_max,apparent_temperature_min,apparent_temperature_mean&temporal_resolution=hourly_6`)
+    return this.http.get(`https://archive-api.open-meteo.com/v1/archive?latitude=${latitude}&longitude=${longitude}&start_date=${this.startDate}&end_date=${this.endDate}&daily=temperature_2m_max,temperature_2m_min,temperature_2m_mean,apparent_temperature_max,apparent_temperature_min,apparent_temperature_mean`)
       .pipe(
         map((response: any) => {
           const filteredData = response.daily.time.map((date: string, index: number) => {
@@ -101,5 +103,39 @@ export class WeatherService {
       );
   }
 
+  public getHistoricalRain(latitude: number, longitude: number): Observable<IHistoricalRain[]> {
+    return this.http.get(`https://archive-api.open-meteo.com/v1/archive?latitude=${latitude}&longitude=${longitude}&start_date=${this.startDate}&end_date=${this.endDate}&daily=precipitation_sum,rain_sum,snowfall_sum,precipitation_hours`)
+      .pipe(
+        map((response: any) => {
+          const filteredData = response.daily.time.map((date: string, index: number) => {
+            return {
+              date: new Date(date),
+              precipitation: response.daily.precipitation_sum[index],
+              rain: response.daily.rain_sum[index],
+              snowfall: response.daily.snowfall_sum[index],
+              precipitation_hours: response.daily.precipitation_hours[index],
+            };
+          });
+          return filteredData as IHistoricalRain[];
+        })
+      );
+  }
+
+  public getHistoricalWind(latitude: number, longitude: number): Observable<IHistoricalWind[]> {
+    return this.http.get(`https://archive-api.open-meteo.com/v1/archive?latitude=${latitude}&longitude=${longitude}&start_date=${this.startDate}&end_date=${this.endDate}&daily=wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant`)
+      .pipe(
+        map((response: any) => {
+          const filteredData = response.daily.time.map((date: string, index: number) => {
+            return {
+              date: new Date(date),
+              wind_speed: response.daily.wind_speed_10m_max[index],
+              wind_gusts: response.daily.wind_gusts_10m_max[index],
+              wind_direction: response.daily.wind_direction_10m_dominant[index],
+            };
+          });
+          return filteredData as IHistoricalWind[];
+        })
+      );
+  }
 
 }
