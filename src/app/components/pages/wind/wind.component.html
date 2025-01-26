@@ -1,1 +1,36 @@
-<p>wind works!</p>
+<div class="container d-flex justify-content-center">
+    <h1>Histórico do último ano</h1>
+</div>
+@if(location?.name !== null){
+    @defer (when windData && barChartWindData && true) {
+        <div class="container">
+            <h2>Vento:</h2>
+            <canvas baseChart [data]="barChartWindData" [options]="barChartOptions" [plugins]="globalChartPlugins"
+                [legend]="globalChartLegend" [type]="'bar'">
+            </canvas>
+            <div class="d-flex justify-content-center">
+                <span>
+                    O dia com a maior velocidade do vento foi {{ maxWindSpeedDate?.toLocaleDateString() }} com {{ maxWindSpeed }}km/h
+                    e o dia com a maior rajada foi {{ maxWindGustDate?.toLocaleDateString() }} com {{ maxWindGust }}km/h.
+                </span>
+            </div>
+        </div>
+
+        <h2>Direção do vento:</h2>
+    <div id="radar" class="container">
+        <canvas baseChart [data]="radarChartWindDirectionData" [options]="radarChartOptions" [plugins]="globalChartPlugins"
+            [legend]="globalChartLegend" [type]="'radar'">
+        </canvas>
+    </div>
+
+}@placeholder() {
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+        </div>
+    </div>
+    }
+}@else {
+    <div class="container d-flex justify-content-center">
+        <h3>Nenhum local selecionado</h3>
+    </div>
+    }

@@ -2,7 +2,7 @@
     <h1>Histórico do último ano</h1>
 </div>
 @if(location?.name !== null){
-
+    @defer (when rainData && lineChartPrecipitationData && doughnutChartPrecipitationTypeData) {
     <div class="container">
         <h2>Precipitação:</h2>
         <canvas id="line" baseChart [data]="lineChartPrecipitationData" [options]="lineChartOptions" [plugins]="lineChartPlugins"
@@ -22,7 +22,12 @@
             [legend]="globalChartLegend" [type]="'doughnut'">
         </canvas>
     </div>
-
+}@placeholder() {
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+        </div>
+    </div>
+    }
 }@else {
 <div class="container d-flex justify-content-center">
     <h3>Nenhum local selecionado</h3>

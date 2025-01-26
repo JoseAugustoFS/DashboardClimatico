@@ -86,7 +86,7 @@ export class RainComponent implements OnInit {
         return percentage === '0.00%' ? '': percentage;
       },
       font: {
-        size: 14,
+        size: typeof window !== 'undefined' && window.innerWidth > 600 ? 14 : 8,
         weight: 'bold',
       }
     }}

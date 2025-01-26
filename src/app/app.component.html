@@ -6,7 +6,9 @@
         <app-location-search />
       </div>
       <div class="col-auto"> 
-        <app-change-temperature-unit />
+        @if(this.router.url === '/' || this.router.url === '/temperature'){
+          <app-change-temperature-unit />
+        }
       </div>
     </div>
     <div id="content" class="col-auto">

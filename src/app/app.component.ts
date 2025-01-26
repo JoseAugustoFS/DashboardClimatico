@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject, OnInit } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ThemeService } from './services/theme.service';
 import { LocationSearchComponent } from './components/location-search/location-search.component';
@@ -14,6 +14,8 @@ import { ChangeTemperatureUnitComponent } from './components/change-temperature-
 export class AppComponent implements OnInit {
   
   constructor(private themeService: ThemeService) {}
+
+  public router = inject(Router);
 
   ngOnInit(): void {
     if (typeof window !== 'undefined' && window.document) {
