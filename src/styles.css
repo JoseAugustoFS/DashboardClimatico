@@ -4,6 +4,15 @@ body.bg-dark {
   }
   
   body.bg-light {
-    background-color: #f8f9fa !important;
+    background-color: #d2d4d6 !important;
     color: #000000 !important;
+}
+
+#titulo {
+  height: 10vh;
+}
+
+.spinner-border {
+  width: 5rem;
+  height: 5rem;
 }

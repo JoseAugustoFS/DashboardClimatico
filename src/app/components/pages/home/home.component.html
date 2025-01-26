@@ -1,47 +1,48 @@
-<div class="container mt-5">
-  @if(weatherData?.max_apparent_temperature){
+
+<div id="titulo" class="container d-flex justify-content-center">
+  <h1>Clima atual</h1>
+</div>
+
+  @if(location?.name !== null){
+    @defer (when weatherData) {
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-      <!-- Cartão para a temperatura máxima aparente -->
       <div class="col">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Temperatura Máxima Aparente</h5>
-            <p class="card-text">{{ weatherData?.max_apparent_temperature }} ° {{ unit }}</p>
+            <p class="card-text">{{ weatherData?.max_apparent_temperature }}° {{ unit }}</p>
           </div>
         </div>
       </div>
   
-      <!-- Cartão para a temperatura máxima -->
       <div class="col">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Temperatura Máxima</h5>
-            <p class="card-text">{{ weatherData?.max_temperature }} ° {{ unit }}</p>
+            <p class="card-text">{{ weatherData?.max_temperature }}° {{ unit }}</p>
           </div>
         </div>
       </div>
   
-      <!-- Cartão para a temperatura mínima aparente -->
       <div class="col">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Temperatura Mínima Aparente</h5>
-            <p class="card-text">{{ weatherData?.min_apparent_temperature }} ° {{ unit }}</p>
+            <p class="card-text">{{ weatherData?.min_apparent_temperature }}° {{ unit }}</p>
           </div>
         </div>
       </div>
   
-      <!-- Cartão para a temperatura mínima -->
+
       <div class="col">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Temperatura Mínima</h5>
-            <p class="card-text">{{ weatherData?.min_temperature }} ° {{ unit }}</p>
+            <p class="card-text">{{ weatherData?.min_temperature }}° {{ unit }}</p>
           </div>
         </div>
       </div>
   
-      <!-- Cartão para a probabilidade de precipitação -->
       <div class="col">
         <div class="card">
           <div class="card-body">
@@ -51,7 +52,6 @@
         </div>
       </div>
   
-      <!-- Cartão para a quantidade de chuva -->
       <div class="col">
         <div class="card">
           <div class="card-body">
@@ -61,7 +61,6 @@
         </div>
       </div>
   
-      <!-- Cartão para a quantidade de neve -->
       <div class="col">
         <div class="card">
           <div class="card-body">
@@ -71,7 +70,6 @@
         </div>
       </div>
   
-      <!-- Cartão para a direção do vento -->
       <div class="col">
         <div class="card">
           <div class="card-body">
@@ -81,7 +79,6 @@
         </div>
       </div>
   
-      <!-- Cartão para a velocidade do vento -->
       <div class="col">
         <div class="card">
           <div class="card-body">
@@ -91,8 +88,17 @@
         </div>
       </div>
     </div>
+  }@placeholder() {
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border" role="status">
+      </div>
+    </div>  
+}
+  
   }@else {
-    <p>Selecione um local</p>
+    <div class="container d-flex justify-content-center">
+      <h3>Nenhum local selecionado</h3>
+    </div>
   }
-  </div>
+
   

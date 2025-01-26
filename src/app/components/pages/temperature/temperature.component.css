@@ -1,0 +1,36 @@
+canvas {
+    width: 1200px;
+    height: 600px;
+}
+
+span {
+    padding-bottom: 20px;
+}
+
+@media (max-width: 690px) {
+
+    h1 {
+        font-size: 1.7em;
+    }
+
+    h2 {
+        font-size: 1.3em;
+    }
+
+    span {
+        font-size: 0.8em;
+    }
+
+    canvas {
+        width: 700px;
+    }
+
+}
+
+@media (max-width: 400px) {
+
+    canvas {
+        width: 400px;
+    }
+
+}

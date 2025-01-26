@@ -2,8 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, Subject, switchMap } from 'rxjs';
 import { ICurrentWeather } from '../interfaces/icurrent-weather';
+import { IHistoricalTemperature } from '../interfaces/ihistorical-temperature';
 
 type temperature = 'C' | 'F' | 'K';
+const YEAR_DIFERENCE: number = 1;
 
 @Injectable({
   providedIn: 'root'
@@ -13,16 +15,26 @@ export class WeatherService {
 
   private currentUnit: temperature = 'C';
   private temperatureUnitChangeSubject = new Subject<temperature>();
+  private startDate?: string;
+  private endDate?: string;
 
   constructor(private http: HttpClient) {
     if (typeof window !== 'undefined' && window.localStorage) {
       const unit = localStorage.getItem('temperatureUnit') ? localStorage.getItem('temperatureUnit') as temperature : 'C';
       this.currentUnit = unit;
     }
+    this.setDates();
   }
 
-  //https://archive-api.open-meteo.com/v1/archive?latitude=52.52&longitude=13.41&start_date=2024-01-20&end_date=2025-01-20&hourly=temperature_2m,apparent_temperature,precipitation,rain,wind_speed_10m,wind_direction_10m
-  //https://open-meteo.com/en/docs/historical-weather-api
+  private setDates(): void {
+    const today = new Date();
+    const finalDate = new Date(today);
+    finalDate.setDate(today.getDate() - 7);
+    const initialDate = new Date(finalDate);
+    initialDate.setFullYear(finalDate.getFullYear() - YEAR_DIFERENCE);
+    this.startDate = initialDate.toISOString().split('T')[0];
+    this.endDate = finalDate.toISOString().split('T')[0];
+  }
 
   private convertTemperature(temp: number, toUnit: temperature): number {
     let convertTemp: number = temp;
@@ -65,6 +77,26 @@ export class WeatherService {
             snowfall: Math.max(...response.hourly.snowfall)
           };
           return filteredData as ICurrentWeather;
+        })
+      );
+  }
+
+  public getHistoricalTemperature(latitude: number, longitude: number): Observable<IHistoricalTemperature[]> {
+    return this.http.get(`https://archive-api.open-meteo.com/v1/archive?latitude=${latitude}&longitude=${longitude}&start_date=${this.startDate}&end_date=${this.endDate}&daily=temperature_2m_max,temperature_2m_min,temperature_2m_mean,apparent_temperature_max,apparent_temperature_min,apparent_temperature_mean&temporal_resolution=hourly_6`)
+      .pipe(
+        map((response: any) => {
+          const filteredData = response.daily.time.map((date: string, index: number) => {
+            return {
+              date: new Date(date),
+              temperature_max: this.convertTemperature(response.daily.temperature_2m_max[index], this.currentUnit),
+              temperature_min: this.convertTemperature(response.daily.temperature_2m_min[index], this.currentUnit),
+              temperature_mean: this.convertTemperature(response.daily.temperature_2m_mean[index], this.currentUnit),
+              apparent_temperature_max: this.convertTemperature(response.daily.apparent_temperature_max[index], this.currentUnit),
+              apparent_temperature_min: this.convertTemperature(response.daily.apparent_temperature_min[index], this.currentUnit),
+              apparent_temperature_mean: this.convertTemperature(response.daily.apparent_temperature_mean[index], this.currentUnit)
+            };
+          });
+          return filteredData as IHistoricalTemperature[];
         })
       );
   }

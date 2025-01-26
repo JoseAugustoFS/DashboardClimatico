@@ -2,7 +2,6 @@ import { Component, inject, OnInit } from '@angular/core';
 import { WeatherService } from '../../../services/weather.service';
 import { LocationService } from '../../../services/location.service';
 import { ILocation } from '../../../interfaces/ilocation';
-import { ICurrentWeather } from '../../../interfaces/icurrent-weather';
 
 
 @Component({
@@ -16,7 +15,7 @@ export class HomeComponent implements OnInit {
   private weatherService: WeatherService = inject(WeatherService);
   private locationService = inject(LocationService)
   public location: ILocation | undefined = this.locationService.getLocation;
-  public weatherData?: ICurrentWeather;
+  public weatherData?: any;
   public unit: 'C' | 'F' | 'K' = this.weatherService.currentTemperatureUnit;
 
   ngOnInit(): void {

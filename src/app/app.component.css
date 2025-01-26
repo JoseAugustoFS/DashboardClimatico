@@ -1,5 +1,7 @@
 .body {
     display: flex;
+    height: 100vh;
+    overflow: hidden;
 }
 
 .row {
@@ -7,30 +9,48 @@
     grid-template-columns: auto 150px;
     gap: 10px;
     width: 100%;
-    
 }
 
-@media (max-width: 680px) {
+app-sidebar {
+    position: sticky;
+    top: 0;
+    flex-shrink: 0;
+    background-color: #262a2e;
+    color: white;
+}
 
-    .row {
-        display: flex;
-    }
+.container {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
 
-    .col-auto {
-        justify-content: start;
-    }
-    
-
+.container::-webkit-scrollbar {
+    width: 10px;
 }
 
 
 @media (max-width: 480px) {
     .body {
         flex-direction: column;
+        height: auto;
+    }
+
+    .row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .col-auto {
+        justify-content: start;
     }
 
     app-sidebar {
         flex: 0 0 425px;
+    }
+
+    .container {
+        z-index: -1;
     }
 
 }
